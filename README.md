@@ -14,41 +14,31 @@ Manual tracking through spreadsheets or notebooks is error-prone, time-consuming
 ---
 
 ## Our Solution
-**BudgetPro** is a smart, AI-enhanced personal finance app designed to help users track, analyze, and optimize their expenses. By providing detailed insights, customizable budgets, and interactive visualizations, BudgetPro empowers users to make informed financial decisions.  
+**BudgetPro** is a smart, user-friendly personal finance app designed to help users track, analyze, and optimize their expenses. By providing detailed insights, customizable budgets, and interactive visualizations, BudgetPro empowers users to make informed financial decisions.  
 
 ### Why BudgetPro is Useful
 - **Prevent Overspending:** Real-time alerts when expenses approach budget limits, with optional low-balance stop notifications.  
 - **Track All Expenses:** Log transactions in ₹ with category, date, description, and optional tags.  
 - **Visualize Spending:** Pie charts, bar graphs, line graphs, and heatmaps show spending patterns.  
 - **Income & Savings Management:** Track multiple income sources and net savings (Income − Expenses).  
-- **Plan for the Future:** Set savings goals, track progress, and receive AI-driven suggestions.  
+- **Plan for the Future:** Set savings goals, track progress, and see actionable insights.  
 
 ---
 
 ## Tech Stack
-**BudgetPro** is built with modern, reliable, and scalable technologies:
+**BudgetPro** is currently a **front-end only project**, built with:
 
 - **Frontend:**  
   - HTML5, CSS3, TailwindCSS for responsive and clean design  
-  - JavaScript (Vanilla JS) for interactivity and dynamic updates  
+  - JavaScript (Vanilla JS) for dynamic updates and interactions  
   - Chart.js for analytics and visualizations  
 
-- **Backend:**  
-  - Node.js with Express (or Python Flask if used) for CRUD operations and expense calculations  
+- **Data Storage:**  
+  - Local storage in the browser (data is temporary unless exported)  
 
-- **Database / Storage:**  
-  - Local JSON / SQLite for offline data persistence  
-  - Optional cloud sync with Firebase / Supabase  
-
-- **Libraries & Tools:**  
-  - Moment.js / Day.js for date calculations  
-  - PDF/CSV export libraries for reports  
-  - OCR for receipt uploads (optional)  
-
-- **Security & Integration:**  
-  - App-level password/PIN  
-  - Encrypted cloud backups  
-  - Optional bank account / UPI integration  
+- **Optional Future Upgrades:**  
+  - Node.js and MongoDB can be added later for backend and persistent storage  
+  - Cloud sync with Firebase or Supabase for multi-user functionality  
 
 ---
 
@@ -67,12 +57,10 @@ Manual tracking through spreadsheets or notebooks is error-prone, time-consuming
 | 📝 **Notes & Tags** | Add context to expenses for easier tracking. |
 | 🔄 **Recurring Transactions** | Daily, weekly, or monthly recurring expenses added automatically. |
 | 💾 **Export & Import** | Export reports to CSV, PDF, or Excel; import past records from CSV. |
-| 🌐 **Multi-Currency & Localization** | Automatic conversion, date/time formatting, and currency support. |
-| 📸 **Receipt Upload & OCR** | Upload receipts and extract transaction details automatically. |
+| 🌐 **Multi-Currency & Localization** | Automatic conversion, date/time formatting, and currency support (future upgrade). |
+| 📸 **Receipt Upload & OCR** | Upload receipts and extract transaction details automatically (future upgrade). |
 | 🎯 **Savings Goals** | Set goals (e.g., “Save ₹5000 for trip”) and track progress visually. |
 | 🏆 **Gamification** | Badges, streaks, and motivational rewards for consistent tracking. |
-| 🔐 **Security** | App-level password/PIN and encrypted cloud backups. |
-| 🏦 **Integration** | Optional bank account / UPI integration for automatic transaction fetching. |
 
 ---
 
@@ -85,25 +73,13 @@ Manual tracking through spreadsheets or notebooks is error-prone, time-consuming
 
 ---
 
-## Technical Highlights
-- **Offline-First Design:** Works without internet; syncs when online.  
-- **Persistent Data Storage:** Local JSON/SQLite storage with optional cloud sync.  
-- **Budget vs Actual Comparison:** Track variance per category and visualize trends.  
-- **Automatic Notifications:** Daily reminders to log expenses, weekly summaries, monthly reports.  
+## How to Run the Project
 
----
+Since **BudgetPro is currently front-end only**, you do **not need Node.js or MongoDB**. You can run it directly in your browser:
 
-## Benefits of Using BudgetPro
-1. **Financial Awareness:** Know exactly where your money goes.  
-2. **Budget Control:** Avoid overspending with alerts and optional stops.  
-3. **Savings Growth:** Track income and savings with clear progress visualization.  
-4. **Actionable Insights:** AI-driven suggestions highlight patterns and unusual expenses.  
-5. **Time-Saving:** Quick logging, recurring transactions, and automated reports reduce manual effort.  
-
----
-
-## Step-by-Step Instructions to Run the Project
-1. **Clone the repository:**
+1. **Download or clone the repository:**
 ```bash
 git clone https://github.com/pavankumar-goldenleg/BUDGET_PRO.git
 cd BUDGET_PRO
+
+
