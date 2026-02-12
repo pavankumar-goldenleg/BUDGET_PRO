@@ -19,10 +19,14 @@ Manual tracking through spreadsheets or notebooks is error-prone, time-consuming
 ### Why BudgetPro is Useful
 - **Prevent Overspending:** Real-time alerts when expenses approach budget limits, with optional low-balance stop notifications.  
 - **Track All Expenses:** Log transactions in ₹ with category, date, description, and optional tags.  
-- **Visualize Spending:** Pie charts, bar graphs, line graphs, and heatmaps show spending patterns.  
+- **Visualize Spending:** Animated circular pie charts, bar graphs, and line graphs to show spending patterns clearly, now consistent across dashboard and reports.
 - **Income & Savings Management:** Track multiple income sources and net savings (Income − Expenses).  
-- **Plan for the Future:** Set savings goals, track progress, and see actionable insights.  
+- **Plan for the Future:** Set savings goals, track progress, and see actionable insights.
+- **Prevent Overspending:** Real-time alerts when expenses approach **90% of category limits**, with optional low-balance stop notifications.
+- | 📈 **Spending Visualization** | Animated circular pie charts, bar charts, and line graphs, consistent across dashboard and reports. |
+- | ⚠️ **Budget Alerts** | Notifications when reaching **90% of category limits**, synced with dashboard alerts. |
 
+  
 ---
 
 ## Tech Stack
@@ -81,5 +85,6 @@ Since **BudgetPro is currently front-end only**, you do **not need Node.js or Mo
 ```bash
 git clone https://github.com/pavankumar-goldenleg/BUDGET_PRO.git
 cd BUDGET_PRO
+
 
 
