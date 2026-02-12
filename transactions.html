@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Transactions - BudgetPro</title>
+  <link rel="manifest" href="manifest.json">
+ <meta name="theme-color" content="#0f172a">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- jsPDF -->
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+</head>
+
+<body class="bg-slate-900 text-white min-h-screen flex">
+
+  <!-- SIDEBAR -->
+  <aside class="w-64 bg-slate-800 p-6 space-y-6">
+    <h1 class="text-2xl font-bold">💰 BudgetPro</h1>
+
+    <nav class="flex flex-col gap-3">
+      <a href="index.html" class="hover:text-blue-400">Dashboard</a>
+      <a href="transactions.html" class="text-blue-400">Transactions</a>
+      <a href="limits.html" class="hover:text-blue-400">Limits</a>
+      <a href="reports.html" class="hover:text-blue-400">Reports</a>
+      <a href="about.html" class="hover:text-blue-400">About</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1 p-10">
+
+    <h2 class="text-3xl font-bold mb-6">📜 Transactions</h2>
+
+    <!-- Controls -->
+    <div class="flex flex-col md:flex-row gap-4 mb-6">
+
+      <input 
+        type="text"
+        id="searchInput"
+        placeholder="Search..."
+        class="p-3 rounded-xl bg-slate-800 w-full"
+      >
+
+      <select 
+        id="filterSelect"
+        class="p-3 rounded-xl bg-slate-800"
+      >
+        <option value="all">All</option>
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+      </select>
+
+      <button 
+        id="exportBtn"
+        class="bg-blue-500 hover:bg-blue-600 px-4 py-3 rounded-xl"
+      >
+        Export PDF
+      </button>
+
+    </div>
+
+    <!-- List -->
+    <div id="transactionList" class="space-y-4"></div>
+
+  </main>
+
+  <script src="js/transactions.js"></script>
+</body>
+</html>

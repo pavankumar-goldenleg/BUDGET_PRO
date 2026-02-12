@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Budget</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-900 text-white min-h-screen flex items-center justify-center">
+
+<div class="bg-slate-800 p-8 rounded-2xl w-96 text-center space-y-4">
+  <h2 class="text-xl font-bold text-blue-400">Set Budget (Optional)</h2>
+  
+  <input type="number" id="budgetAmount" placeholder="Enter budget" class="w-full p-2 rounded bg-slate-700">
+  <button id="saveBudget" class="bg-blue-500 w-full p-2 rounded hover:bg-blue-600 transition">Save Budget</button>
+
+  <a href="index.html" class="block text-center text-blue-400 mt-2">Back</a>
+</div>
+
+<script src="js/data.js"></script>
+<script>
+  document.getElementById("saveBudget").addEventListener("click", () => {
+    const val = Number(document.getElementById("budgetAmount").value);
+    if (!val || val <= 0) {
+      alert("Enter a valid budget");
+      return;
+    }
+    saveBudget(val);
+    alert("Budget saved!");
+    window.location.href = "index.html";
+  });
+</script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Limits - BudgetPro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+
+<body class="bg-slate-900 text-white min-h-screen flex">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-slate-800 p-6 space-y-4 border-r border-slate-700">
+    <h1 class="text-3xl font-bold text-blue-400 mb-6">BudgetPro</h1>
+    <a href="index.html" class="block hover:text-blue-400">Dashboard</a>
+    <a href="transactions.html" class="block hover:text-blue-400">Transactions</a>
+    <a href="limits.html" class="block text-blue-400 font-bold">Limits</a>
+    <a href="reports.html" class="block hover:text-blue-400">Reports</a>
+    <a href="#" onclick="toggleAboutModal()" class="block hover:text-blue-400">About</a>
+  </aside>
+
+  <!-- Main -->
+  <main class="flex-1 p-8">
+
+    <h2 class="text-2xl font-bold mb-6">Category Spending Limits</h2>
+
+    <!-- Add Limit Form -->
+    <div class="bg-slate-800 p-6 rounded-xl mb-8">
+      <h3 class="font-semibold mb-4">Add / Update Limit</h3>
+
+      <div class="flex gap-4 flex-wrap">
+        <input type="text" id="limitCategory" placeholder="Category (e.g., Food)"
+          class="p-2 rounded bg-slate-700 w-48">
+
+        <input type="number" id="limitAmount" placeholder="Amount"
+          class="p-2 rounded bg-slate-700 w-40">
+
+        <button onclick="saveLimit()"
+          class="bg-blue-600 px-4 py-2 rounded font-bold hover:bg-blue-500">
+          Save Limit
+        </button>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div id="limitSummary" class="mb-6 text-lg font-semibold"></div>
+
+    <!-- Limits List -->
+    <div id="limitsContainer" class="space-y-6"></div>
+
+  </main>
+
+  <!-- About Modal -->
+  <div id="aboutModal" class="fixed inset-0 bg-black/70 hidden items-center justify-center">
+    <div class="bg-slate-800 p-8 rounded-xl w-96 text-center">
+      <h2 class="text-xl font-bold mb-4">About BudgetPro</h2>
+      <p>Smart budgeting app with analytics, limits, and reports.</p>
+      <button onclick="toggleAboutModal()"
+        class="mt-6 bg-blue-600 px-4 py-2 rounded hover:bg-blue-500">
+        Close
+      </button>
+    </div>
+  </div>
+
+  <script src="js/global.js"></script>
+  <script src="js/limits.js"></script>
+  <script src="js/global.js"></script>
+
+</body>
+</html>
