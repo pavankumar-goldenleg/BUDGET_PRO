@@ -4,28 +4,44 @@
   <meta charset="UTF-8">
   <title>Transactions - BudgetPro</title>
   <link rel="manifest" href="manifest.json">
- <meta name="theme-color" content="#0f172a">
+  <meta name="theme-color" content="#0f172a">
 
-  <!-- Tailwind -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- jsPDF -->
+  <!-- jsPDF for export -->
   <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <!-- Optional global CSS -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="bg-slate-900 text-white min-h-screen flex">
+<body class="app-body flex bg-slate-900 text-white min-h-screen">
 
   <!-- SIDEBAR -->
-  <aside class="w-64 bg-slate-800 p-6 space-y-6">
-    <h1 class="text-2xl font-bold">💰 BudgetPro</h1>
+  <aside class="sidebar bg-slate-800 flex flex-col justify-between min-h-screen p-6">
 
-    <nav class="flex flex-col gap-3">
-      <a href="index.html" class="hover:text-blue-400">Dashboard</a>
-      <a href="transactions.html" class="text-blue-400">Transactions</a>
-      <a href="limits.html" class="hover:text-blue-400">Limits</a>
-      <a href="reports.html" class="hover:text-blue-400">Reports</a>
-      <a href="about.html" class="hover:text-blue-400">About</a>
-    </nav>
+    <div>
+      <h1 class="logo text-3xl font-bold text-blue-400 mb-10">BudgetPro</h1>
+
+      <nav class="sidebar-nav flex flex-col gap-4">
+        <a href="index.html" class="hover:text-yellow-400">Dashboard</a>
+        <a href="transactions.html" class="text-yellow-400 font-bold">Transactions</a>
+        <a href="limits.html" class="hover:text-yellow-400">Limits</a>
+        <a href="reports.html" class="hover:text-yellow-400">Reports</a>
+        <a href="about.html" class="hover:text-yellow-400">About</a>
+      </nav>
+    </div>
+
+    <div class="text-center mt-10">
+      <button onclick="toggleAlerts()" 
+        class="bg-yellow-500 hover:bg-yellow-400 text-black font-bold px-4 py-2 rounded-xl relative transition">
+        🔔 Alerts
+        <span id="alertCount"
+          class="absolute -top-2 -right-2 bg-red-600 text-white text-xs px-2 py-0.5 rounded-full hidden">
+          0
+        </span>
+      </button>
+    </div>
+
   </aside>
 
   <!-- MAIN CONTENT -->
@@ -35,14 +51,12 @@
 
     <!-- Controls -->
     <div class="flex flex-col md:flex-row gap-4 mb-6">
-
       <input 
         type="text"
         id="searchInput"
         placeholder="Search..."
         class="p-3 rounded-xl bg-slate-800 w-full"
       >
-
       <select 
         id="filterSelect"
         class="p-3 rounded-xl bg-slate-800"
@@ -51,21 +65,36 @@
         <option value="income">Income</option>
         <option value="expense">Expense</option>
       </select>
-
       <button 
         id="exportBtn"
         class="bg-blue-500 hover:bg-blue-600 px-4 py-3 rounded-xl"
       >
         Export PDF
       </button>
-
     </div>
 
-    <!-- List -->
+    <!-- Transactions List -->
     <div id="transactionList" class="space-y-4"></div>
 
   </main>
 
+  <!-- ALERTS PANEL -->
+  <div id="alertsPanel" 
+    class="fixed right-0 top-0 h-full w-80 bg-slate-900 border-l border-slate-700 
+           transform translate-x-full transition-transform duration-300 
+           z-50 p-6 overflow-y-auto shadow-2xl">
+
+    <h3 class="text-xl font-bold mb-4 text-yellow-400">⚠ Alerts</h3>
+    <div id="alertsList" class="space-y-3 text-sm text-slate-300"></div>
+    <button onclick="clearAlerts()" 
+      class="mt-6 w-full bg-red-600 hover:bg-red-500 py-2 rounded-lg font-bold transition">
+      Clear Alerts
+    </button>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="js/global.js"></script>
+  <script src="js/limits.js"></script>
   <script src="js/transactions.js"></script>
 </body>
 </html>

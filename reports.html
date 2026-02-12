@@ -3,62 +3,110 @@
 <head>
   <meta charset="UTF-8">
   <title>Reports - BudgetPro</title>
+  <meta name="theme-color" content="#0f172a">
 
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="app-body">
+<body class="app-body flex bg-slate-900 text-white min-h-screen">
 
   <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <h1 class="logo">BudgetPro</h1>
+  <aside class="sidebar bg-slate-800 min-h-screen p-6 flex flex-col justify-between">
+    <div>
+      <h1 class="logo text-3xl font-bold text-blue-400 mb-10">BudgetPro</h1>
 
-    <nav class="sidebar-nav">
-      <a href="index.html">Dashboard</a>
-      <a href="transactions.html">Transactions</a>
-      <a href="limits.html">Limits</a>
-      <a href="reports.html" class="active">Reports</a>
-      <a href="about.html">About</a>
-    </nav>
+      <nav class="sidebar-nav flex flex-col gap-4">
+        <a href="index.html" class="hover:text-yellow-400">Dashboard</a>
+        <a href="transactions.html" class="hover:text-yellow-400">Transactions</a>
+        <a href="limits.html" class="hover:text-yellow-400">Limits</a>
+        <a href="reports.html" class="text-yellow-400 font-bold">Reports</a>
+        <a href="about.html" class="hover:text-yellow-400">About</a>
+      </nav>
+    </div>
+    
+    <div class="text-center mt-10">
+      <button onclick="toggleAlerts()" 
+        class="bg-yellow-500 hover:bg-yellow-400 text-black font-bold px-4 py-2 rounded-xl relative transition">
+        🔔 Alerts
+        <span id="alertCount"
+          class="absolute -top-2 -right-2 bg-red-600 text-white text-xs px-2 py-0.5 rounded-full hidden">
+          0
+        </span>
+      </button>
+    </div>
   </aside>
 
-  <!-- MAIN -->
-  <main class="main-content">
+  <!-- MAIN CONTENT -->
+  <main class="main-content flex-1 p-10 overflow-y-auto">
 
-    <h2 class="page-title">Reports & Analytics</h2>
+    <h2 class="page-title text-3xl font-bold mb-8">Reports & Analytics</h2>
 
-    <!-- GRID -->
-    <div class="reports-grid">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-      <div class="report-card">
-        <h3>Income vs Expense</h3>
-        <canvas id="incomeExpenseChart"></canvas>
+      <!-- Income vs Expense -->
+      <div class="report-card bg-slate-800 p-6 rounded-2xl shadow-lg flex flex-col">
+        <h3 class="text-xl font-bold mb-4">Income vs Expense</h3>
+        <canvas id="incomeExpenseChart" class="h-48 w-full"></canvas>
       </div>
 
       <div class="report-card">
-        <h3>Savings Overview</h3>
-        <canvas id="savingsChart"></canvas>
+        <h3 class="text-xl font-bold mb-4">Savings Overview</h3>
+        <div class="chart-container w-64 h-64 mx-auto"> <!-- same as dashboard -->
+          <canvas id="savingsChart"></canvas>
+        </div>
       </div>
 
       <div class="report-card">
-        <h3>Category Spending</h3>
-        <canvas id="categoryChart"></canvas>
+        <h3 class="text-xl font-bold mb-4">Category Spending</h3>
+        <div class="chart-container w-64 h-64 mx-auto">
+          <canvas id="categoryChart"></canvas>
+        </div>
       </div>
 
-      <div class="report-card">
-        <h3>Monthly Summary</h3>
-        <canvas id="monthlyChart"></canvas>
+
+      <!-- Monthly Summary -->
+      <div class="report-card bg-slate-800 p-6 rounded-2xl shadow-lg flex flex-col">
+        <h3 class="text-xl font-bold mb-4">Monthly Spending</h3>
+        <canvas id="monthlyChart" class="h-48 w-full"></canvas>
+      </div>
+
+      <!-- Expenses by Category Over Time -->
+      <div class="report-card bg-slate-800 p-6 rounded-2xl shadow-lg flex flex-col">
+        <h3 class="text-xl font-bold mb-4">Category Spending Over Months</h3>
+        <canvas id="categoryTimeChart" class="h-48 w-full"></canvas>
+      </div>
+
+      <!-- Income vs Savings Trend -->
+      <div class="report-card bg-slate-800 p-6 rounded-2xl shadow-lg flex flex-col">
+        <h3 class="text-xl font-bold mb-4">Income vs Savings Trend</h3>
+        <canvas id="incomeSavingsChart" class="h-48 w-full"></canvas>
       </div>
 
     </div>
 
   </main>
 
+  <!-- ALERTS PANEL -->
+  <div id="alertsPanel" 
+       class="fixed right-0 top-0 h-full w-80 bg-slate-900 border-l border-slate-700 
+              transform translate-x-full transition-transform duration-300 
+              z-50 p-6 overflow-y-auto shadow-2xl">
+    <h3 class="text-xl font-bold mb-4 text-yellow-400">⚠ Alerts</h3>
+    <div id="alertsList" class="space-y-3 text-sm text-slate-300"></div>
+    <button onclick="clearAlerts()" 
+      class="mt-6 w-full bg-red-600 hover:bg-red-500 py-2 rounded-lg font-bold transition">
+      Clear Alerts
+    </button>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="js/global.js"></script>
+  <script src="js/limits.js"></script>
   <script src="js/data.js"></script>
   <script src="js/reports.js"></script>
-  <script src="js/global.js"></script>
 
 </body>
 </html>

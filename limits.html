@@ -3,26 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <title>Limits - BudgetPro</title>
+  <meta name="theme-color" content="#0f172a">
+
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
+<body class="app-body flex bg-slate-900 text-white min-h-screen">
 
-<body class="bg-slate-900 text-white min-h-screen flex">
+  <!-- SIDEBAR -->
+  <aside class="sidebar bg-slate-800 flex flex-col justify-between min-h-screen p-6">
 
-  <!-- Sidebar -->
-  <aside class="w-64 bg-slate-800 p-6 space-y-4 border-r border-slate-700">
-    <h1 class="text-3xl font-bold text-blue-400 mb-6">BudgetPro</h1>
-    <a href="index.html" class="block hover:text-blue-400">Dashboard</a>
-    <a href="transactions.html" class="block hover:text-blue-400">Transactions</a>
-    <a href="limits.html" class="block text-blue-400 font-bold">Limits</a>
-    <a href="reports.html" class="block hover:text-blue-400">Reports</a>
-    <a href="#" onclick="toggleAboutModal()" class="block hover:text-blue-400">About</a>
+    <div>
+      <h1 class="logo text-3xl font-bold text-blue-400 mb-10">BudgetPro</h1>
+
+      <nav class="sidebar-nav flex flex-col gap-4">
+        <a href="index.html" class="hover:text-yellow-400">Dashboard</a>
+        <a href="transactions.html" class="hover:text-yellow-400">Transactions</a>
+        <a href="limits.html" class="text-yellow-400 font-bold">Limits</a>
+        <a href="reports.html" class="hover:text-yellow-400">Reports</a>
+        <a href="about.html" class="hover:text-yellow-400">About</a>
+      </nav>
+    </div>
+
+    <div class="text-center mt-10">
+      <button onclick="toggleAlerts()" 
+        class="bg-yellow-500 hover:bg-yellow-400 text-black font-bold px-4 py-2 rounded-xl relative transition">
+        🔔 Alerts
+        <span id="alertCount"
+          class="absolute -top-2 -right-2 bg-red-600 text-white text-xs px-2 py-0.5 rounded-full hidden">
+          0
+        </span>
+      </button>
+    </div>
+
   </aside>
 
-  <!-- Main -->
-  <main class="flex-1 p-8">
+  <!-- MAIN CONTENT -->
+  <main class="flex-1 p-10">
 
-    <h2 class="text-2xl font-bold mb-6">Category Spending Limits</h2>
+    <h2 class="text-3xl font-bold mb-6">Category Spending Limits</h2>
 
     <!-- Add Limit Form -->
     <div class="bg-slate-800 p-6 rounded-xl mb-8">
@@ -31,10 +52,8 @@
       <div class="flex gap-4 flex-wrap">
         <input type="text" id="limitCategory" placeholder="Category (e.g., Food)"
           class="p-2 rounded bg-slate-700 w-48">
-
         <input type="number" id="limitAmount" placeholder="Amount"
           class="p-2 rounded bg-slate-700 w-40">
-
         <button onclick="saveLimit()"
           class="bg-blue-600 px-4 py-2 rounded font-bold hover:bg-blue-500">
           Save Limit
@@ -50,21 +69,22 @@
 
   </main>
 
-  <!-- About Modal -->
-  <div id="aboutModal" class="fixed inset-0 bg-black/70 hidden items-center justify-center">
-    <div class="bg-slate-800 p-8 rounded-xl w-96 text-center">
-      <h2 class="text-xl font-bold mb-4">About BudgetPro</h2>
-      <p>Smart budgeting app with analytics, limits, and reports.</p>
-      <button onclick="toggleAboutModal()"
-        class="mt-6 bg-blue-600 px-4 py-2 rounded hover:bg-blue-500">
-        Close
-      </button>
-    </div>
+  <!-- ALERTS PANEL -->
+  <div id="alertsPanel" 
+    class="fixed right-0 top-0 h-full w-80 bg-slate-900 border-l border-slate-700 
+           transform translate-x-full transition-transform duration-300 
+           z-50 p-6 overflow-y-auto shadow-2xl">
+
+    <h3 class="text-xl font-bold mb-4 text-yellow-400">⚠ Alerts</h3>
+    <div id="alertsList" class="space-y-3 text-sm text-slate-300"></div>
+    <button onclick="clearAlerts()" 
+      class="mt-6 w-full bg-red-600 hover:bg-red-500 py-2 rounded-lg font-bold transition">
+      Clear Alerts
+    </button>
   </div>
 
+  <!-- SCRIPTS -->
   <script src="js/global.js"></script>
   <script src="js/limits.js"></script>
-  <script src="js/global.js"></script>
-
 </body>
 </html>
